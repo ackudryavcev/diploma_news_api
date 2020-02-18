@@ -4,7 +4,7 @@ const {
   createArticle, getAllArticles, deleteArticle,
 } = require('../controllers/articles');
 
-articles.post('/', celebrate({
+articles.post('/articles', celebrate({
   body: Joi.object().keys({
     keyword: Joi.string().min(1).required(),
     title: Joi.string().min(1).required(),
@@ -16,9 +16,9 @@ articles.post('/', celebrate({
   }),
 }), createArticle);
 
-articles.get('/', getAllArticles);
+articles.get('/articles', getAllArticles);
 
-articles.delete('/:id', celebrate({
+articles.delete('/articles/:id', celebrate({
   params: Joi.object().keys({
     id: Joi.string().alphanum(),
   }),
